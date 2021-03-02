@@ -26,7 +26,7 @@
 	**Passive Wiretapping**
 		Monitoring and recording the information without any alteration in the communication.
 
-	**Lawful Interception**
+	**Lawful Interception/Wiretapping**
 		Wiretapping with legal authorization which allows law enforcement agencies to wiretap the communication of user.
 --------------------------------------------------------------------------------------------------------------
 # MAC Attacks
@@ -80,7 +80,7 @@
 			- Man-in-the-Middle attacks
 			- Packet sniffing
 			- Data interceptions
-			- VoIP tapping
+			- VoIP tapping ---> VOICE OVER IP
 			- Stealing passwords
 --------------------------------------------------------
 # Spoofing Attacks
@@ -89,7 +89,7 @@
 		Attacker sniffs the MAC address of users which are active on switch ports and duplicate the MAC address.
 		This can intercept the traffic and traffic destined to the legitimate user may direct to the attacker.
 
-# DNS Poisoning
+# DNS Poisoning   ---> WEB CACHE Poisoning
 
 # Domain Name System (DNS)
 	- DNS is used in networking to translate human-readable domain names to IP address.

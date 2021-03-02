@@ -23,7 +23,7 @@ application.
 - JavaScript
 - HTML
 
-# Web Application Threats
+ # Web Application Threats
   - **Insecure storage** - sensitive data is stored on client side in plain text.
   - **Information leakage** - Sensitive Data is leaked unintentionally
   - **Directory traversal** - end user is able to traverse server's directory

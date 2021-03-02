@@ -21,7 +21,7 @@
 	**Exploit**
 		- Collecting sensitive information such as usernames, password, etc...
 
-# Types of Social Engineering
+# Types of Social Engineering - SE Attacks
 	**Human-based Social Engineering - SE**
 			One-to-one interaction with the target. Earn the trust to gather sensitive information from the target.
 		***Impersonation***
@@ -31,7 +31,7 @@
 			- Eavesdropping is a technique in which attacker is revealed information by listening to the conversation.
 			- Reading or accessing any source of information without being notified.
 			- Shoulder Surfing is a method of gathering information by standing behind the target.
-		***Dumpster Diving***
+		***Dumpster Diving*** --->
 			- Looking for treasure in trash.
 		***Piggybacking and Tailgating***
 			- Piggyback is a technique in which attacker waits for an authorized person to gain entry in a restricted area.
@@ -39,8 +39,8 @@
 
 	**Computer-based Social Engineering**
 		***Phishing***
-			Attacker send fake emails which looks like legitimate email, they're sent to hundreds, sometimes thousands, of recipients. When recipient opens the link, he is enticed for providing information. Attacker use IDN Homographic Attack (International Domain Name), In this attacker use Crylic script to register domain name and create fake website simmilar to actual website.
-		***Spear Phishing***
+			Attacker send fake emails which looks like legitimate email, they're sent to hundreds, sometimes thousands, of recipients. When recipient opens the link, he is enticed for providing information. Attacker use IDN Homographic Attack (International Domain Name), In this attacker use Crylic script to register domain name and create fake website similar to actual website.
+		***Spear Phishing*** --->
 			Similar as phishing but it is focused on one target. Because of this, it is generate higher response rate.
 
 	**Mobile-based Social Engineering**
@@ -49,7 +49,7 @@
 		***Repackaging Legitimate Apps***
 			Repack a legitimate app with a malware.
 
-	**Insider Attack**
+	**Insider Attack**  --->
 		Social Engineering is not all about a third person gathering information, it may be an insider with privileges.
 
 	**Impersonation on Social Network Sites**
@@ -67,7 +67,7 @@
 		- Prove the fake identity to take advantage of it
 
 # Countermeasures
-	**secure sensitive data**
+	**Secure sensitive data**
 		Store Data at rest in a secure manner (Use Encryption or Salted Hashing). Don't share Sensitive info/Documents with everyone.
 	**Physical security**
 	 	Who has access to Physical records (Data), who has access to sensitive areas (Server room, Admin block, Data Centres), and how you ensure that Physical security.

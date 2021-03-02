@@ -51,7 +51,7 @@
 		**DnsDumpster.com**
 			- Provide Information about Domain Name
 		**DnsTwister** - https://dnstwister.report/
-			- This website show domain with simmilar name which are registered or available.
+			- This website show domain with similar name which are registered or available.
 		**Dirb** - Directory Buster
 		**Sublist3r** - Identify subdomains
 

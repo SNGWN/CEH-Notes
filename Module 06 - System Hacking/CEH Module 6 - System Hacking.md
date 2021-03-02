@@ -1,7 +1,7 @@
 # Methods for System Hacking
 	- Cracking Password
-	- Exploit Services or OS
-	- Malicious Applications ----> Clearing Tracks
+	- Exploit Services, Application Installed, OS
+	- Malicious Applications
 -------------------------------------------------------------------------------------------------
 # Password Cracking - Password Cracking is the method for extracting the password to gain authorized access to the target system like a legitimate user.
 	Three type of authentication factors:
@@ -13,7 +13,7 @@
 	- In Case sensitive letters
 	- Special characters
 	- Numbers
-	- Lengthy password (more than 8 character)
+	- Lengthy password/Pin (more than 8 character)
 	- Pass-Phrases
 ------------------------------------------------
 # Types of Password Attacks
@@ -22,7 +22,7 @@
 		- Shoulder-Surfing
 		- Dumpster-Diving
 		- Eaves-Dropping
-		- Vishing
+		- Vishing   --->
 
 	# Active Online Attack - Directly interact with the target for cracking password.
 		- Dictionary/Wordlist Attack - In Dictionary Attack, Attacker Use Preconfigured wordlist (For Username or Password) to gain access into victims account.
@@ -34,8 +34,8 @@
 		- Wire Sniffing - In Wire Sniffing, Attacker Sniff network Traffic and try to extract sensitive Information like Telnet, FTP, SMTP credentials.
 		- Man-in-the-Middle (MITM) Attack - The attacker involves himself into the communication, insert himself in.
 			MITM Attacks:
-				- xerosploit --> Ettercap - Bettercap
-				- Browser Exploitation Framework (BeEF-XSS) - older version on browser
+				- xerosploit --> Ettercap --> Bettercap
+				- Browser Exploitation Framework (BeEF-XSS) - older version on browser  ---> XSS Protection
 
 	# Default Password - Default Password are Set by Developer or Manufacturer. Attacker Try those password to gain Access.
 			- https://cirt.net/
@@ -48,14 +48,14 @@
 
 	# Password Cracking Mitigation
 		- Change default password.
-		- Do not store/save passwords in applications.
-		- Do not use guessable passwords.
+		- Do not store/save passwords in applications. 																						
+		- Do not use guessable passwords.																							
 		- Store passwords in form of salted hash.
 		- Change passwords on weekly/Monthly basis.
 		- Different password for each service.
 		- Configure policies for incorrect password attempts.
 -------------------------------------------------------------------------------------------------
-# Escalating Privileges - Privilege Escalation is the process of gaining Privileges of Other user.											
+# Escalating Privileges - Privilege Escalation is the process of gaining Privileges of Other user.			   -->    								
 	- Horizontal Privileges Escalation - The attacker attempts to gain access to user with same set of privileges.
 	- Vertical Privileges Escalation - The attacker try to gain access to user with higher set of Privileges.
 -------------------------------------------------------------------------------------------------
@@ -67,7 +67,6 @@
 
 # Key-logging Countermeasures
 	- Don't click on doubtful URLs
-	- Anti-Keylogger software
 	- On-Screen keyboard for secrets
 	- Physical monitoring
 	- Host-based IDS

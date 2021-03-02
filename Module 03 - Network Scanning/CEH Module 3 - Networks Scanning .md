@@ -12,7 +12,7 @@
 ## TCP Flags:
 	- **SYN** : Sync flag is used to Initiate 3 way handshake between hosts.
 	- **ACK** : Acknowledgment flag is used to acknowledge the successful receipt of a packet.
-	- **FIN** : The Finished flag means there is no more data from the sender.
+	- **FIN** : The Finished flag means there is no more data from the sender.  1GB --> 50000 --> 1,2,3,4,5,6,.........50000 (FIN)
 	- **URG** : The Urgent flag is used to notify the receiver to process the urgent packets before processing all other packets.
 	- **PSH** : The Push flag is somewhat similar to the URG flag and tells the receiver to process these packets as they are received instead of buffering them.
 	- **RST** : Reset a Connection
@@ -20,9 +20,9 @@
 ## TCP 3 Way Handshake:
 	| Client		| Direction |   Server  |
 	|:---------:|:---------:|:---------:|
-	|    SYN    |   -->     |           |
-	|	        	|    <--    |  SYN+ACK  |
-	|    ACK 		|   -->     |           |
+	|    SYN    | ---->     |           |
+	|	        	|    <----  |  SYN+ACK  |
+	|    ACK 		| ---->     |           |
 ######################################################################################################
 																		## TASK ##
 																-------------------
@@ -109,7 +109,7 @@
 													attempting to evade some older or improperly configured
 													firewall or we can specify packet fragment size using
 													--mtu <size>" option. Size should be multiple of 8
-													
+
 		nmap -D RND:<val> <ip>						-D Decoy option is used to mask an Nmap scan by using one
 													or more decoys. Decoy is used to hide identity. RND is
 													Number of Decoy Address to be used. We can also specify
