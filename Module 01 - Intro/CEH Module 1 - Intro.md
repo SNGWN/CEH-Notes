@@ -1,4 +1,4 @@
-# K1). Information Security Triangle or CIA Trait and Non-Repudiation
+ # K1). Information Security Triangle or CIA Trait and Non-Repudiation
 		- **Confidentiality**
 			- Confidentiality Ensures that Information is only accessible by right person i.e. only Authorized person can see the information. Protection from unauthorized access. Confidentiality is ensured by implementing Authentication Checks (User Name and Password), Captcha (Mitigate Brute-force and prevent from Bots), etc. Confidential info should be stored in private offline storage and keep in a safe place, or encrypt data if possible.
 			- Popular attacks affecting confidentiality : Data Breaches, Card Skimming, Keylogging, Phishing, Dumpster Diving, etc.
@@ -8,7 +8,7 @@
 		- **Availability**
 		 	- Availability ensures that Info. is only available to the right person at the right time, i.e. whenever the info. is requested it should be available.
 			- Popular Attacks Affecting Availability : DOS, DDOS, etc.
-		- **Non-Repudiation**
+		-  diation**
 		 	- Non-Repudiation ensures that Person A or Person B can't deny for action performed or happened on there side. For Example, suppose Person A send Money to Person B, so person B can't say money was never received. Like we have proof (Bank Statement, Account Balance Increment, Balance Deduction on Person A's side).
 		- FireEye Data Breach --> https://malicious.life/episode/episode-101/
 
@@ -62,7 +62,7 @@
 		- **Clearing Traces/Logs**
 			Clear Footprints like connection established, Activities performed) Clear Date defining Hackers Identity
 
-#K9). Some information Security Standards: How Organizations prove there Security --> By Auditing.
+#K9). Some  information Security Standards: How Organizations prove there Security --> By Auditing.
 		**PCI-DSS - Payment Card Industry - Data Security System** --> Security Checks how Payment Card info should be stored and what are the security checks to keep in mind.
 		**HIPAA - Health Insurance Portability and Accountability Act** --> How employee or client Health related Info is stored, and Security Checks to maintain CIA Trait.
 		**ISO 27000** --> ISO 27000 is a family of Standards defining security standards to be implemented in Organizations.
