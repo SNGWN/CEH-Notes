@@ -21,9 +21,9 @@ Embedded with technology, these devices can communicate and interact over the In
 - IoT uses IPv6 due to the limited number of IPv4 addresses
 
 ### Wireless Transmission Mechanism
-  - Bluetooth Low Energy (BLE) - Blue Born
-  - Wi-FI
-  - Radio-Frequency Identification (RFID) - Range 01-30m
+  - Bluetooth Low Energy (BLE) - Blue Born ---> Class C (10 M)
+  - Wi-FI ---> 30 M - 250 M
+  - Radio-Frequency Identification (RFID) - Range 01-30m --> Active RFID --- Passive RFID ---- Semi Active/Passive RFID Tags
   - Near-Field Communication (NFC) - Range 10cm
   - LTE-Advanced : formally submitted as a candidate 4G, often being described as 3.9G (beyond 3G but pre-4G)
   - Wi-Fi HaLow : uses 900MHz to provide extended range, lower energy consumption - Renge of around **1Km**
@@ -91,8 +91,8 @@ Embedded with technology, these devices can communicate and interact over the In
 - Unencrypted local data storage
 - Confidentiality and integrity issues
 - Cloud computing attacks
-- Malicious updates
-- Insecure APIs
+- Malicious updates --> 
+- Insecure APIs ---> login ---> OAuth ---> 
 - Mobile application threats
 - DoS / DDoS
 - Rolling Code Attack: attacker capture signal from transmitter device, simultaneously blocking the receiver to receive
@@ -101,12 +101,9 @@ the signal, later it will used to gain unauthorized access (steal car with captu
 - Jamming Attack: jamming the signal to prevent the communication of devices
 - Backdoor (not just IoT related)
 - Eavesdropping
-- Sybil attack
-- Exploit kits
 - Man-in-the-middle attack
 - Replay attack
 - Forged malicious devices
-- Side channel attack
 - Ransomware attack
 
 ## Hacking Methodology
