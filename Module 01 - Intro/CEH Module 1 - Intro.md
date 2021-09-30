@@ -28,8 +28,8 @@
 		**Red Team** --> Perform like an Hacker and try to hack into Computer Systems, physical Security, Network Security, etc
 		**Blue Team** --> Act as a Defender, and implement necessary security checks to ensure System Security. Also react on Red team's Actions/Attacks. Blue team also work as Incident Response team.
 
-#K5). Few Terms used in Hacking
-		**Vulnerability** - Know Security Flow which can be used to compromise CIA trait.
+# K5). Few Terms used in Hacking
+		**Vulnerability** - Know Security Flaw which can be used to compromise CIA trait.
 		**Payload** - This is the Malicious Script, used to perform malicious activity.
 		**Exploit** - Exploit is the combination of Vulnerability and Payload.
 		**Zero Day** - These are Vulnerabilities unknown to developer or not previously disclosed in public.
