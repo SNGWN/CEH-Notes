@@ -65,6 +65,6 @@
 		Clear Footprints like connection established, Activities performed) Clear Date defining Hackers Identity
 
 # K9). Some  information Security Standards: How Organizations prove there Security --> By Auditing.
-	PCI-DSS - Payment Card Industry - Data Security System --> Security Checks how Payment Card info should be stored and what are the security checks to keep in mind.
-	HIPAA - Health Insurance Portability and Accountability Act --> How employee or client Health related Info is stored, and Security Checks to maintain CIA Trait.
-	ISO 27000 --> ISO 27000 is a family of Standards defining security standards to be implemented in Organizations.
+	- PCI-DSS - Payment Card Industry - Data Security System --> Security Checks how Payment Card info should be stored and what are the security checks to keep in mind.
+	- HIPAA - Health Insurance Portability and Accountability Act --> How employee or client Health related Info is stored, and Security Checks to maintain CIA Trait.
+	- ISO 27000 --> ISO 27000 is a family of Standards defining security standards to be implemented in Organizations.
