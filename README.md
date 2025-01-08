@@ -66,3 +66,29 @@
 | [![Public and Private IP Allocation](https://img.youtube.com/vi/J7YJ34cy91c/hqdefault.jpg)](https://youtu.be/J7YJ34cy91c?si=-ZL2ALCta0ogv6sk) | [![Subnatting & Supernatting](https://img.youtube.com/vi/0o1w36LkDUg/hqdefault.jpg)](https://youtu.be/0o1w36LkDUg?si=Nb2uFJ-FKNJiBilt) |
 
 </details>
+
+
+<details>
+  <summary>📺 <strong>Basic Malware and System Exploitation Techniques</strong></summary>
+
+| **Windows Lock Screen Bypass** | **Malware Part 1** |
+|--------------------------------|------------------------------|
+| [![Windows Lock Screen Bypass](https://img.youtube.com/vi/f-yPOVM5OFM/hqdefault.jpg)](https://youtu.be/f-yPOVM5OFM?si=ZbGYJ-yJa6vTbgLP) | [![Malware Part 1](https://img.youtube.com/vi/xf5mxbltx1Y/hqdefault.jpg)](https://youtu.be/xf5mxbltx1Y?si=Lj9uuTTuxBTpdu5i) |
+
+| **Malware Part 2** | **Malware Part 3** |
+|-----------------------------|-----------------------------|
+| [![Malware Part 2](https://img.youtube.com/vi/kGUBXYpPhy4/hqdefault.jpg)](https://youtu.be/kGUBXYpPhy4?si=1SFMti3mKdWG93bo) | [![Malware Part 3](https://img.youtube.com/vi/ykD4t00Y_Uw/hqdefault.jpg)](https://youtu.be/ykD4t00Y_Uw?si=WuQEuDqZR9gIvD49) |
+
+| **Malware Part 4** | **Network Connection and Traffic** |
+|-----------------------------|------------------------------------|
+| [![Malware Part 4](https://img.youtube.com/vi/qCK8QmbQ3F4/hqdefault.jpg)](https://youtu.be/qCK8QmbQ3F4?si=PnKUF57QjSa3a16M) | [![Network Connection and Traffic](https://img.youtube.com/vi/8cxAw2ZrGtE/hqdefault.jpg)](https://youtu.be/8cxAw2ZrGtE?si=z43F7ANfXoIhhbKR) |
+
+| **Memory Stack Introduction Part 1** | **Memory Stack Introduction Part 2** |
+|-------------------------------------|-------------------------------------|
+| [![Memory Stack Introduction Part 1](https://img.youtube.com/vi/fQWatTI9G4E/hqdefault.jpg)](https://youtu.be/fQWatTI9G4E?si=bCc7ynYva2KFM1Qv) | [![Memory Stack Introduction Part 2](https://img.youtube.com/vi/uSd2dtzGN5s/hqdefault.jpg)](https://youtu.be/uSd2dtzGN5s?si=E7BVgymfVb06A7sy) |
+
+| **Memory Corruption and Buffer Overflow** | **Eternal Blue or MS-17-010 or CVE-2017-0144** |
+|------------------------------------------|------------------------------------------------|
+| [![Memory Corruption and Buffer Overflow](https://img.youtube.com/vi/LNqpE_6DfBU/hqdefault.jpg)](https://youtu.be/LNqpE_6DfBU?si=PYgbzLXx3gZ5rtp9) | [![Eternal Blue or MS-17-010 or CVE-2017-0144](https://img.youtube.com/vi/1A23SXBWDqs/hqdefault.jpg)](https://youtu.be/1A23SXBWDqs?si=qSoY2SwZUQcSTc2x) |
+
+</details>
