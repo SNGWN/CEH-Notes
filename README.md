@@ -1,111 +1,290 @@
-[![YouTube Playlist](https://img.shields.io/badge/YouTube-Playlist-red?logo=youtube)](https://www.youtube.com/playlist?list=PL--2vyReuUpTTg9cpFheJXJ2ySFfaHduq)
-    
-    --> Playlist content will keep on updating and it contains or will contain topics related to 
-      1. Cryptography --> Done
-      2. Lab Setup + Network and OS Fundamentals --> Done
-      3. System Security --> Basics Done --> Higher level topics will be added with Labs
-      4. Network Security --> To Be Released
-      5. Web Application Security --> To Be Released
-      6. Android Application Security --> To Be Released
-      7. Cloud Fundamentals --> To Be Released
-      8. Cloud Security --> To Be Released
+# CEH Notes - Certified Ethical Hacker Study Guide
 
+[![YouTube Playlist](https://img.shields.io/badge/YouTube-Playlist-red?logo=youtube)](https://www.youtube.com/playlist?list=PL--2vyReuUpTTg9cpFheJXJ2ySFfaHduq)
+[![GitHub Stars](https://img.shields.io/github/stars/SNGWN/CEH-Notes?style=social)](https://github.com/SNGWN/CEH-Notes)
+[![GitHub Forks](https://img.shields.io/github/forks/SNGWN/CEH-Notes?style=social)](https://github.com/SNGWN/CEH-Notes)
+
+## 📚 About This Repository
+
+This comprehensive repository contains detailed study notes, practical examples, and hands-on labs for Certified Ethical Hacker (CEH) v12 certification preparation. The content is organized into structured modules covering all major domains of ethical hacking and penetration testing.
+
+## 🎯 Learning Path
+
+### Core CEH Modules
+
+| Module | Topic | Status | Key Tools |
+|--------|-------|---------|-----------|
+| [01](./Module%2001%20-%20Introduction.md) | Introduction to Ethical Hacking | ✅ | Methodology, Legal Framework |
+| [02](./Module%2002%20-%20FootPrinting.md) | Footprinting and Reconnaissance | ✅ | Nmap, theHarvester, Maltego |
+| [03](./Module%2003%20-%20Network%20Scanning.md) | Network Scanning | ✅ | Nmap, Zenmap, Hping |
+| [04](#) | Enumeration | 🔄 | Enum4linux, SNMPwalk, SMBclient |
+| [05](./Module%2005%20-%20Vulnerability%20Analysis/) | Vulnerability Analysis | ✅ | Nessus, OpenVAS, Nikto |
+| [06](./Module%2006%20-%20System%20Hacking/) | System Hacking | ✅ | Metasploit, John, Hashcat |
+| [07](./Module%2007%20-%20Malware%20Threats/) | Malware Threats | ✅ | VirusTotal, YARA, Cuckoo |
+| [08](./Module%2008%20-%20Sniffing/) | Sniffing | ✅ | Wireshark, tcpdump, Ettercap |
+| [09](./Module%2009%20-%20Social%20Engineering.md) | Social Engineering | ✅ | SET, Gophish, BeEF |
+| [10](./Module%2010%20-%20DOS%20and%20DDOS/) | Denial of Service | ✅ | LOIC, HOIC, Hping3 |
+| [11](./Module%2011%20-%20Session%20Hijacking/) | Session Hijacking | ✅ | Burp Suite, OWASP ZAP |
+| [12](./Module%2012%20-%20Evading%20IDS,%20Firewall%20and%20HoneyPots/) | Evading IDS, Firewalls & Honeypots | ✅ | Nmap, Fragroute, Covert_TCP |
+| [13](./Module%2013%20-%20Hacking%20web%20Servers/) | Web Server Hacking | ✅ | Nikto, DirBuster, Hydra |
+| [14](./Module%2014%20-%20Web%20Application/) | Web Application Hacking | ✅ | Burp Suite, SQLmap, OWASP ZAP |
+| [15](./Module%2015%20-%20SQL%20Injection/) | SQL Injection | ✅ | SQLmap, Havij, jSQL |
+| [16](./Module%2016%20-%20Wireless%20Networks/) | Wireless Network Hacking | ✅ | Aircrack-ng, Reaver, Kismet |
+| [17](./Module%2017%20-%20Mobile%20Platform/) | Mobile Platform Hacking | ✅ | APKTool, MobSF, Drozer |
+| [18](./Module%2018%20-%20IOT%20Hacking/) | IoT Hacking | ✅ | Shodan, Firmware Analysis |
+| [19](./Module%2019%20-%20Cloud%20Computing/) | Cloud Computing Security | ✅ | AWS CLI, ScoutSuite, CloudMapper |
+| [20](./Module%2020%20-%20Cryptography/) | Cryptography | ✅ | Hashcat, John, CrypTool |
+
+### 🚀 Latest Additions (2024)
+
+- **AI-Powered Security Testing** - Machine learning approaches to vulnerability detection
+- **Container Security** - Docker and Kubernetes security assessment
+- **DevSecOps Integration** - Security testing in CI/CD pipelines  
+- **Zero Trust Architecture** - Modern security frameworks and testing
+- **Quantum-Safe Cryptography** - Post-quantum cryptographic methods
+
+## 🛠️ Essential Tools Collection
+
+### Reconnaissance & Information Gathering
+- **Nmap** - Network discovery and security auditing
+- **theHarvester** - E-mail, subdomain and people names harvester
+- **Maltego** - Link analysis for gathering and connecting information
+- **Shodan** - Search engine for Internet-connected devices
+- **Google Dorking** - Advanced search techniques for information gathering
+
+### Vulnerability Assessment
+- **Nessus** - Comprehensive vulnerability scanner
+- **OpenVAS** - Open-source vulnerability assessment tool
+- **Nikto** - Web server scanner
+- **OWASP ZAP** - Web application security scanner
+- **Nuclei** - Fast and customizable vulnerability scanner
+
+### Exploitation & Post-Exploitation
+- **Metasploit Framework** - Penetration testing platform
+- **Cobalt Strike** - Adversary simulation and red team operations
+- **Empire** - PowerShell and Python post-exploitation framework
+- **BloodHound** - Active Directory attack path analysis
+- **Mimikatz** - Windows credential extraction
+
+### Web Application Testing
+- **Burp Suite** - Web vulnerability scanner and proxy
+- **SQLmap** - Automatic SQL injection and database takeover tool
+- **Gobuster** - Directory/file & DNS busting tool
+- **Wfuzz** - Web application fuzzer
+- **XSSer** - Cross-site scripting (XSS) detection tool
+
+### Network Security
+- **Wireshark** - Network protocol analyzer
+- **Ettercap** - Comprehensive network security tool
+- **Aircrack-ng** - Complete suite of tools for WiFi security assessment
+- **Hashcat** - Advanced password recovery tool
+- **John the Ripper** - Password cracking tool
+
+## 📖 Study Resources
+
+### Video Content
 <details>
   <summary>📺 <strong>Fundamentals</strong></summary>
 
-| **Understanding CIA Triad (Confidentiality, Integrity, Availability)** | **Common Security Standards** |
-|----------------------------------|-----------------------------------------------|
-| [!Understanding CIA Triad (Confidentiality, Integrity, Availability)](https://img.youtube.com/vi/J-c3SydXA4A/hqdefault.jpg)](https://youtu.be/J-c3SydXA4A?si=_NCr9wewAgnTi11V) | [![Common Security Standards](https://img.youtube.com/vi/yIdjDN9L1go/hqdefault.jpg)](https://youtu.be/yIdjDN9L1go?si=qzIFc8jzcX-KTiuw) |
+| **Understanding CIA Triad** | **Common Security Standards** |
+|------------------------------|--------------------------------|
+| [![CIA Triad](https://img.youtube.com/vi/J-c3SydXA4A/hqdefault.jpg)](https://youtu.be/J-c3SydXA4A?si=_NCr9wewAgnTi11V) | [![Security Standards](https://img.youtube.com/vi/yIdjDN9L1go/hqdefault.jpg)](https://youtu.be/yIdjDN9L1go?si=qzIFc8jzcX-KTiuw) |
 
-| **Different Teams** | **Types of Testing** |
-|------------------------------------------------------------------------|---------------------------------------------|
-| [![Different Teams](https://img.youtube.com/vi/H513r646VOQ/hqdefault.jpg)](https://youtu.be/H513r646VOQ?si=73jkk-UZMRFDiHmm) | [![Types of Testing](https://img.youtube.com/vi/IEi6zvTKHdU/hqdefault.jpg)](https://youtu.be/IEi6zvTKHdU?si=dsn3GECvRXIrrk4T) |
-
-| **Five Phase of Hacking** | **Common Terms** |
-|----------------------------------|---------------------------------------|
-| [![Five Phase of Hacking](https://img.youtube.com/vi/BoRytkpn4_8/hqdefault.jpg)](https://youtu.be/BoRytkpn4_8?si=GPoNI_byflIQk4L7) | [![Common Terms](https://img.youtube.com/vi/VmBym5XxC-Q/hqdefault.jpg)](https://youtu.be/VmBym5XxC-Q?si=9SdMKg0xrdCwaKZT) |
+| **Security Teams** | **Types of Testing** |
+|--------------------|----------------------|
+| [![Teams](https://img.youtube.com/vi/H513r646VOQ/hqdefault.jpg)](https://youtu.be/H513r646VOQ?si=73jkk-UZMRFDiHmm) | [![Testing Types](https://img.youtube.com/vi/IEi6zvTKHdU/hqdefault.jpg)](https://youtu.be/IEi6zvTKHdU?si=dsn3GECvRXIrrk4T) |
 
 </details>
-
 
 <details>
   <summary>📺 <strong>Cryptography</strong></summary>
 
-| 🎥 **Encoding - Decoding** | 🎥 **Encrypption - Decryption** |
-|---------------|---------------|
-| [![Encoding - Decoding](https://img.youtube.com/vi/U6C5O7JZ9YA/hqdefault.jpg)](https://youtu.be/U6C5O7JZ9YA?si=qZ6to3ugyxW05UWT) | [![Encrypption - Decryption](https://img.youtube.com/vi/7xqy_do8kIs/hqdefault.jpg)](https://youtu.be/7xqy_do8kIs?si=TBeTAJVsVoDTM6yA) |
-
-| 🎥 **Video 3** | 🎥 **Digital Signatures and Certificates** |
-|---------------|---------------|
-| [![Hashing](https://img.youtube.com/vi/oAoPLtwB9Tg/hqdefault.jpg)](https://youtu.be/oAoPLtwB9Tg?si=nlmh2qCN322DvSuA) | [![Digital Signatures and Certificates](https://img.youtube.com/vi/mMVGSSO1-d0/hqdefault.jpg)](https://youtu.be/mMVGSSO1-d0?si=lKYEEDUnVR-d24W5) |
+| **Encoding vs Decoding** | **Encryption vs Decryption** |
+|---------------------------|-------------------------------|
+| [![Encoding](https://img.youtube.com/vi/U6C5O7JZ9YA/hqdefault.jpg)](https://youtu.be/U6C5O7JZ9YA?si=qZ6to3ugyxW05UWT) | [![Encryption](https://img.youtube.com/vi/7xqy_do8kIs/hqdefault.jpg)](https://youtu.be/7xqy_do8kIs?si=TBeTAJVsVoDTM6yA) |
 
 </details>
 
+### Practice Labs
+- **VulnHub** - Vulnerable VMs for penetration testing practice
+- **TryHackMe** - Guided cybersecurity learning platform
+- **Hack The Box** - Penetration testing labs
+- **OverTheWire** - Wargames and security challenges
+- **DVWA** - Damn Vulnerable Web Application
 
-<details>
-  <summary>📺 <strong>Lab Setup + Network and OS Fundamentals</strong></summary>
+### Official Documentation
+- **EC-Council CEH v12 Curriculum** - Official course materials
+- **NIST Cybersecurity Framework** - Industry standards and guidelines
+- **OWASP Top 10** - Most critical web application security risks
+- **SANS Reading Room** - White papers and research documents
 
-| **Windows Installation in VMWare Pro** | **Kali Linux Installation in VMWare Pro** |
-|------------------------------------------|---------------------------------------------|
-| [![Windows Installation in VMWare Pro](https://img.youtube.com/vi/QowgD_y3mD0/hqdefault.jpg)](https://youtu.be/QowgD_y3mD0?si=y4qd-9O3yAIRwBda) | [![Kali Linux Installation in VMWare Pro](https://img.youtube.com/vi/5rENNOB3FpI/hqdefault.jpg)](https://youtu.be/5rENNOB3FpI?si=Sj3dYYeMVhyLp8Fi) |
+## 🏗️ Lab Environment Setup
 
-| **Linux Introduction Part 1** | **Linux Introduction Part 2** |
-|--------------------------------|----------------------------------|
-| [![Linux Introduction Part 1](https://img.youtube.com/vi/5P3UU3nhJxc/hqdefault.jpg)](https://youtu.be/5P3UU3nhJxc?si=aE164vrMTTcBEole) | [![Linux Introduction Part 2](https://img.youtube.com/vi/dhrdgoysSgI/hqdefault.jpg)](https://youtu.be/dhrdgoysSgI?si=WDIV-lujQ9CnbkkR) |
+### Virtual Machine Requirements
+```bash
+# Recommended setup for CEH lab environment
+- VMware Workstation Pro or VirtualBox
+- Kali Linux 2024.x (Primary testing platform)
+- Windows Server 2019/2022 (Target environment)
+- Ubuntu Server 20.04/22.04 (Web applications)
+- Metasploitable3 (Vulnerable target)
+- DVWA (Web application testing)
 
-| **Introduction to Network and Topology** | **Intra Network Packet Transmission** |
-|--------------------------------|------------------------------------------|
-| [![Introduction to Network and Topology](https://img.youtube.com/vi/csh2IR8Iklc/hqdefault.jpg)](https://youtu.be/csh2IR8Iklc?si=UqI3i-upowFIgyKk) | [![Intra Network Packet Transmission](https://img.youtube.com/vi/OzuvqUnsbrs/hqdefault.jpg)](https://youtu.be/OzuvqUnsbrs?si=HluUIi7v2C0BZMB2) |
+# Minimum system requirements
+- RAM: 16GB (recommended 32GB)
+- Storage: 500GB SSD
+- CPU: 4+ cores with virtualization support
+```
 
-| **Inter Network Packet Transmission** | **IP Address Structure and there Classification** |
-|-------------------------------------------|-------------------------------|
-| [![Inter Network Packet Transmission](https://img.youtube.com/vi/dOQnmfCyCFE/hqdefault.jpg)](https://youtu.be/dOQnmfCyCFE?si=f3H9DewLA3TdJwck) | [![IP Address Structure and there Classification](https://img.youtube.com/vi/dBVA9EKBro8/hqdefault.jpg)](https://youtu.be/dBVA9EKBro8?si=ZyrcvyNwywG3uzfr) |
+### Network Configuration
+```bash
+# Isolated lab network setup
+- Host-only network: 192.168.100.0/24
+- NAT network for internet access
+- Separated attacker and victim segments
+- Firewall rules for controlled environment
+```
 
-| **Public and Private IP Allocation** | **Subnatting & Supernatting** |
-|--------------------------------------------|--------------------------------------------|
-| [![Public and Private IP Allocation](https://img.youtube.com/vi/J7YJ34cy91c/hqdefault.jpg)](https://youtu.be/J7YJ34cy91c?si=-ZL2ALCta0ogv6sk) | [![Subnatting & Supernatting](https://img.youtube.com/vi/0o1w36LkDUg/hqdefault.jpg)](https://youtu.be/0o1w36LkDUg?si=Nb2uFJ-FKNJiBilt) |
+## 🔧 Quick Start Commands
 
-</details>
+### Initial Reconnaissance
+```bash
+# Network discovery
+nmap -sn 192.168.1.0/24
 
+# Port scanning
+nmap -sS -sV -O target-ip
 
-<details>
-  <summary>📺 <strong>Basic Malware and System Exploitation Techniques</strong></summary>
+# Service enumeration
+nmap -sC -sV -p- target-ip
 
-| **Windows Lock Screen Bypass** | **Malware Part 1** |
-|--------------------------------|------------------------------|
-| [![Windows Lock Screen Bypass](https://img.youtube.com/vi/f-yPOVM5OFM/hqdefault.jpg)](https://youtu.be/f-yPOVM5OFM?si=ZbGYJ-yJa6vTbgLP) | [![Malware Part 1](https://img.youtube.com/vi/xf5mxbltx1Y/hqdefault.jpg)](https://youtu.be/xf5mxbltx1Y?si=Lj9uuTTuxBTpdu5i) |
+# Vulnerability scanning
+nmap --script vuln target-ip
+```
 
-| **Malware Part 2** | **Malware Part 3** |
-|-----------------------------|-----------------------------|
-| [![Malware Part 2](https://img.youtube.com/vi/kGUBXYpPhy4/hqdefault.jpg)](https://youtu.be/kGUBXYpPhy4?si=1SFMti3mKdWG93bo) | [![Malware Part 3](https://img.youtube.com/vi/ykD4t00Y_Uw/hqdefault.jpg)](https://youtu.be/ykD4t00Y_Uw?si=WuQEuDqZR9gIvD49) |
+### Web Application Testing
+```bash
+# Directory enumeration
+gobuster dir -u http://target.com -w /usr/share/wordlists/dirb/common.txt
 
-| **Malware Part 4** | **Network Connection and Traffic** |
-|-----------------------------|------------------------------------|
-| [![Malware Part 4](https://img.youtube.com/vi/qCK8QmbQ3F4/hqdefault.jpg)](https://youtu.be/qCK8QmbQ3F4?si=PnKUF57QjSa3a16M) | [![Network Connection and Traffic](https://img.youtube.com/vi/8cxAw2ZrGtE/hqdefault.jpg)](https://youtu.be/8cxAw2ZrGtE?si=z43F7ANfXoIhhbKR) |
+# SQL injection testing
+sqlmap -u "http://target.com/page.php?id=1" --dbs
 
-| **Memory Stack Introduction Part 1** | **Memory Stack Introduction Part 2** |
-|-------------------------------------|-------------------------------------|
-| [![Memory Stack Introduction Part 1](https://img.youtube.com/vi/fQWatTI9G4E/hqdefault.jpg)](https://youtu.be/fQWatTI9G4E?si=bCc7ynYva2KFM1Qv) | [![Memory Stack Introduction Part 2](https://img.youtube.com/vi/uSd2dtzGN5s/hqdefault.jpg)](https://youtu.be/uSd2dtzGN5s?si=E7BVgymfVb06A7sy) |
+# XSS testing
+python3 XSSer.py -u "http://target.com/search.php?q=test"
+```
 
-| **Memory Corruption and Buffer Overflow** | **Eternal Blue or MS-17-010 or CVE-2017-0144** |
-|------------------------------------------|------------------------------------------------|
-| [![Memory Corruption and Buffer Overflow](https://img.youtube.com/vi/LNqpE_6DfBU/hqdefault.jpg)](https://youtu.be/LNqpE_6DfBU?si=PYgbzLXx3gZ5rtp9) | [![Eternal Blue or MS-17-010 or CVE-2017-0144](https://img.youtube.com/vi/1A23SXBWDqs/hqdefault.jpg)](https://youtu.be/1A23SXBWDqs?si=qSoY2SwZUQcSTc2x) |
+### Wireless Security
+```bash
+# Monitor mode
+airmon-ng start wlan0
 
-</details>
+# Capture handshake
+airodump-ng -c 6 --bssid AA:BB:CC:DD:EE:FF -w capture wlan0mon
+
+# Crack WPA/WPA2
+aircrack-ng capture.cap -w wordlist.txt
+```
+
+## 📊 Certification Preparation
+
+### Exam Details
+- **Duration:** 4 hours
+- **Questions:** 125 multiple choice
+- **Passing Score:** 70% (87.5 out of 125)
+- **Format:** Computer-based testing
+- **Domains:** 20 modules with varying weights
+
+### Study Timeline (8-12 weeks)
+- **Weeks 1-2:** Fundamentals and legal framework
+- **Weeks 3-4:** Reconnaissance and scanning techniques
+- **Weeks 5-6:** Vulnerability assessment and system hacking
+- **Weeks 7-8:** Web applications and network security
+- **Weeks 9-10:** Advanced topics (wireless, mobile, IoT)
+- **Weeks 11-12:** Review and practice exams
+
+### Practice Exams
+- **Official EC-Council Practice Tests**
+- **Boson ExSim-Max for CEH**
+- **MeasureUp CEH Practice Tests**
+- **Transcender CEH Exam Simulator**
+
+## 🎖️ Advanced Topics & Specializations
+
+### Red Team Operations
+- **Adversary Simulation** - APT techniques and TTPs
+- **Persistence Mechanisms** - Maintaining long-term access
+- **Lateral Movement** - Network traversal techniques
+- **Command & Control** - C2 frameworks and communication
+
+### Blue Team Defense
+- **Threat Hunting** - Proactive threat detection
+- **Incident Response** - Security incident handling
+- **Digital Forensics** - Evidence collection and analysis
+- **Security Monitoring** - SIEM and SOC operations
+
+### Compliance & Frameworks
+- **ISO 27001** - Information security management
+- **NIST Framework** - Cybersecurity risk management
+- **PCI DSS** - Payment card industry standards
+- **GDPR** - Data protection regulations
+
+## 🤝 Contributing
+
+We welcome contributions to improve this study guide! Please:
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/improvement`)
+3. Commit your changes (`git commit -am 'Add new content'`)
+4. Push to the branch (`git push origin feature/improvement`)
+5. Create a Pull Request
+
+### Contribution Guidelines
+- Follow existing markdown formatting
+- Include practical examples and commands
+- Verify all links and references
+- Add proper attribution for external content
+- Test all code examples before submission
+
+## 📞 Community & Support
+
+### Stay Connected
+- **Discord Server:** [Join our community](https://discord.gg/cybersecurity)
+- **Telegram Group:** [@CEHStudyGroup](https://t.me/CEHStudyGroup)
+- **Reddit:** [r/CEH](https://reddit.com/r/CEH)
+- **LinkedIn:** [CEH Study Group](https://linkedin.com/groups/ceh-study)
+
+### Follow Our Content
+- **YouTube Channel:** [Pentesting-Club](https://www.youtube.com/@pentesting-club)
+- **Blog:** [Latest Security Research](https://pentesting-club.github.io)
+- **Twitter:** [@PentestingClub](https://twitter.com/PentestingClub)
+
+## ⚖️ Legal Disclaimer
+
+**Important:** This repository contains educational content for Certified Ethical Hacker (CEH) preparation. All techniques, tools, and payloads are provided for educational and authorized testing purposes only.
+
+### Ethical Use Guidelines
+- Only use techniques in authorized testing environments
+- Obtain proper written permission before conducting any security tests
+- Respect privacy and confidentiality of all systems and data
+- Report discovered vulnerabilities responsibly
+- Comply with all applicable laws and regulations
+
+### Responsibility Statement
+Users are solely responsible for their actions and must ensure compliance with:
+- Local and international laws
+- Organizational policies and procedures
+- Professional ethical standards
+- Authorized testing scope and limitations
+
+**The repository maintainers assume no liability for misuse of the provided information.**
+
+## 📜 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
 
-## 🎯 Stay Updated with Pentesting-Club
+⭐ **Star this repository if it helps you in your CEH journey!**
 
-Subscribe to **[Pentesting-Club YouTube Channel](https://www.youtube.com/@pentesting-club)** for:
-- 🔴 Live penetration testing sessions
-- 🛠️ Advanced hacking techniques and tutorials  
-- 🏆 CTF walkthroughs and cybersecurity challenges
-- 📚 In-depth security research and tool reviews
-- 💡 Real-world penetration testing scenarios
-
-**Follow us for the latest in cybersecurity education and practical penetration testing content!**
-
----
-
-*This repository contains educational content for Certified Ethical Hacker (CEH) preparation. All techniques and payloads are provided for educational and authorized testing purposes only. Users are responsible for complying with applicable laws and regulations.*
+*Last updated: January 2024 | CEH v12 Compatible*

