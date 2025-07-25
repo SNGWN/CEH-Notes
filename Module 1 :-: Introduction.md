@@ -68,3 +68,62 @@
 	- PCI-DSS - Payment Card Industry - Data Security System --> Security Checks how Payment Card info should be stored and what are the security checks to keep in mind.
 	- HIPAA - Health Insurance Portability and Accountability Act --> How employee or client Health related Info is stored, and Security Checks to maintain CIA Trait.
 	- ISO 27000 --> ISO 27000 is a family of Standards defining security standards to be implemented in Organizations.
+
+# K10). Practical Information Gathering Commands and Payloads
+
+## Basic System Information Gathering
+```bash
+# Windows System Information
+systeminfo                    # Detailed system information
+wmic computersystem get domain # Get domain information
+net user                      # List local users
+net localgroup administrators # List administrators
+whoami /all                   # Current user privileges
+
+# Linux System Information  
+uname -a                      # System information
+cat /etc/passwd              # List users
+id                           # Current user info
+sudo -l                      # Check sudo privileges
+```
+
+**Documentation**: These commands gather basic system information for reconnaissance.
+**Limitations**: May require appropriate privileges; some commands might be logged.
+
+## Network Information Gathering
+```bash
+# Network Configuration
+ipconfig /all          # Windows - detailed network config
+ifconfig -a           # Linux - network interfaces
+netstat -an           # Active connections
+arp -a                # ARP table entries
+route print           # Windows routing table
+route -n              # Linux routing table
+```
+
+**Documentation**: Reveals network topology, active connections, and routing information.
+**Limitations**: Limited to local network visibility; requires network access.
+
+## Environment Variables and Path Discovery
+```bash
+# Windows
+set                           # Show all environment variables
+echo %PATH%                   # Display PATH variable
+dir /s /b *.exe | findstr /E .exe  # Find executables
+
+# Linux
+env                          # Environment variables
+echo $PATH                   # PATH variable
+find / -perm -4000 2>/dev/null  # Find SUID binaries
+```
+
+**Documentation**: Helps identify system paths, installed software, and potential privilege escalation vectors.
+**Limitations**: Output can be verbose; some paths may require elevated privileges.
+
+# Reference URLs and Research Papers:
+- NIST Cybersecurity Framework: https://www.nist.gov/cyberframework
+- OWASP Top 10: https://owasp.org/www-project-top-ten/
+- SANS Reading Room: https://www.sans.org/reading-room/
+- CVE Database: https://cve.mitre.org/
+- Research Paper: "A Survey of Information Security" - https://ieeexplore.ieee.org/document/8423146
+- CIA Triad Analysis: https://www.techrepublic.com/article/the-cia-triad/

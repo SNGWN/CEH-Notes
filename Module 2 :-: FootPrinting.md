@@ -71,3 +71,136 @@
 		- Relation with other companies - Other Organizations Client working with.
 		- Network Information - Different Networks, Running Services, Domains, Mail Server, etc.
 		- System Information - OS, Architecture, etc
+
+----------------------------------------------------------------
+# K6). Practical Footprinting Payloads and Techniques
+
+## WHOIS Information Gathering
+```bash
+# Basic WHOIS queries
+whois example.com                    # Domain registration info
+whois -h whois.arin.net 192.168.1.1 # IP WHOIS lookup
+dig example.com                      # DNS information
+nslookup example.com                 # DNS lookup
+```
+
+**Documentation**: Retrieves domain registration details, IP ownership, and DNS records.
+**Limitations**: Some WHOIS servers may rate-limit queries; privacy protection may hide details.
+
+## DNS Enumeration and Zone Transfer
+```bash
+# DNS Record Enumeration
+dig @8.8.8.8 example.com ANY         # All DNS records
+dig @8.8.8.8 example.com MX          # Mail server records
+dig @8.8.8.8 example.com NS          # Name servers
+dig @8.8.8.8 example.com TXT         # TXT records
+
+# Zone Transfer Attempt
+dig @ns1.example.com example.com AXFR # Zone transfer attempt
+dnsrecon -d example.com -t axfr       # Automated zone transfer
+```
+
+**Documentation**: Enumerates DNS records and attempts zone transfers to gather subdomain information.
+**Limitations**: Zone transfers are usually restricted; requires proper DNS server configuration.
+
+## Subdomain Enumeration
+```bash
+# Sublist3r - Subdomain discovery
+sublist3r -d example.com -v           # Verbose subdomain enumeration
+sublist3r -d example.com -b           # Use brute force
+
+# Amass - Advanced subdomain enumeration
+amass enum -d example.com             # Basic enumeration
+amass enum -brute -d example.com      # Brute force mode
+
+# Manual subdomain brute force
+for sub in www mail ftp admin test; do
+    nslookup $sub.example.com
+done
+```
+
+**Documentation**: Discovers subdomains using passive and active techniques.
+**Limitations**: Passive methods may miss subdomains; brute force can be time-consuming.
+
+## Google Dorking Advanced Techniques
+```
+# File Discovery
+site:example.com filetype:pdf          # Find PDF files
+site:example.com filetype:doc          # Find DOC files
+site:example.com filetype:xlsx         # Find Excel files
+
+# Login Pages and Admin Panels
+site:example.com inurl:login           # Find login pages
+site:example.com inurl:admin           # Find admin panels
+site:example.com intitle:"index of"    # Directory listings
+
+# Error Pages and Debug Info
+site:example.com "sql syntax near"     # SQL errors
+site:example.com "Warning: mysql"     # MySQL warnings
+site:example.com "error in your SQL"  # SQL error messages
+
+# Email and Contact Information
+site:example.com "@example.com"       # Email addresses
+site:example.com "contact" filetype:txt # Contact files
+```
+
+**Documentation**: Uses Google search operators to find sensitive information and exposed files.
+**Limitations**: Results depend on Google's indexing; sensitive info may not be indexed.
+
+## OSINT Social Media Enumeration
+```bash
+# theHarvester - Email and subdomain harvesting
+theHarvester -d example.com -l 500 -b all  # Search all sources
+theHarvester -d example.com -b linkedin    # LinkedIn specific
+theHarvester -d example.com -b twitter     # Twitter specific
+
+# Sherlock - Username enumeration across platforms
+python3 sherlock.py target_username       # Search across platforms
+
+# Holehe - Email enumeration across platforms
+holehe example@domain.com                  # Check email registration
+```
+
+**Documentation**: Gathers emails, usernames, and social media presence for target organization.
+**Limitations**: Rate limiting on APIs; some platforms may block automated requests.
+
+## Website Technology Fingerprinting
+```bash
+# Whatweb - Technology identification
+whatweb example.com                       # Basic scan
+whatweb -v example.com                    # Verbose output
+whatweb -a 3 example.com                  # Aggressive scan
+
+# Wappalyzer CLI
+wappalyzer example.com                    # Technology stack
+
+# Nikto - Web vulnerability scanner
+nikto -h example.com                      # Basic scan
+nikto -h example.com -p 80,443           # Specific ports
+```
+
+**Documentation**: Identifies web technologies, frameworks, and potential vulnerabilities.
+**Limitations**: May trigger security alerts; some technologies may be hidden or obfuscated.
+
+## Network Range Discovery
+```bash
+# ASN Lookup and IP Range Discovery
+whois -h whois.radb.net -- '-i origin AS15169'  # Google ASN ranges
+amass intel -org "Target Organization"           # Organization ASN discovery
+
+# Shodan Queries for Organization
+shodan search "org:\"Target Organization\""     # Organization assets
+shodan search "ssl:\"example.com\""             # SSL certificate search
+shodan search "hostname:\"example.com\""        # Hostname search
+```
+
+**Documentation**: Discovers IP ranges and internet-facing assets belonging to target organization.
+**Limitations**: Requires Shodan API key; some assets may not be indexed.
+
+# Reference URLs and Research Papers:
+- OWASP Testing Guide - Information Gathering: https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/01-Information_Gathering/
+- NIST SP 800-115 Technical Guide to Information Security Testing: https://csrc.nist.gov/publications/detail/sp/800-115/final
+- SANS Institute - Footprinting and Reconnaissance: https://www.sans.org/reading-room/whitepapers/testing/
+- Research Paper: "Footprinting Techniques and Tools" - https://www.ijsr.net/archive/v4i4/SUB152673.pdf
+- Passive DNS Analysis: https://www.farsightsecurity.com/technical-whitepapers/
+- OSINT Framework: https://osintframework.com/

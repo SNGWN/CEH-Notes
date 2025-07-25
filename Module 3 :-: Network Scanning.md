@@ -103,3 +103,187 @@
 --------------------------------------------------------------------------
 ## We can also use Zenmap
 --------------------------------------------------------------------------
+
+# Advanced Network Scanning Techniques and Payloads
+
+## Stealth and Evasion Techniques
+```bash
+# Advanced Nmap Evasion
+nmap -sS -f -D RND:10 --randomize-hosts --spoof-mac 0 target  # Stealth SYN scan with fragmentation and decoys
+nmap -sA -T1 --scan-delay 5s target                           # ACK scan with slow timing
+nmap --script-timeout 30s --host-timeout 300s target         # Custom timeouts
+
+# Custom TCP Flags
+nmap --scanflags SYNFINPSH target                             # Custom flag combination
+hping3 -S -p 80 -c 1 target                                  # Custom SYN packet
+hping3 -A -p 80 -c 1 target                                  # Custom ACK packet
+```
+
+**Documentation**: Advanced evasion techniques to bypass firewalls and IDS/IPS systems.
+**Limitations**: May be detected by modern security systems; some techniques are noisy.
+
+## Service Version Detection and OS Fingerprinting
+```bash
+# Aggressive Service Detection
+nmap -sV --version-intensity 9 target                        # Maximum version detection
+nmap -O --osscan-guess target                                # OS detection with guessing
+nmap -A --script vuln target                                 # Aggressive scan with vulnerability scripts
+
+# Banner Grabbing
+nc -nv target 21                                            # Manual FTP banner grab
+nc -nv target 22                                            # SSH banner grab
+curl -I http://target                                       # HTTP header grab
+telnet target 25                                            # SMTP banner grab
+```
+
+**Documentation**: Detailed service enumeration and OS identification for vulnerability assessment.
+**Limitations**: Aggressive scans are easily detected; may trigger security alerts.
+
+## NSE (Nmap Scripting Engine) Advanced Usage
+```bash
+# Vulnerability Discovery Scripts
+nmap --script vuln target                                   # All vulnerability scripts
+nmap --script smb-vuln-* target                            # SMB vulnerability scripts
+nmap --script http-vuln-* target                           # HTTP vulnerability scripts
+nmap --script ssl-* target                                 # SSL/TLS scripts
+
+# Brute Force Scripts
+nmap --script ssh-brute --script-args userdb=users.txt,passdb=pass.txt target
+nmap --script ftp-brute --script-args userdb=users.txt,passdb=pass.txt target
+nmap --script http-brute --script-args userdb=users.txt,passdb=pass.txt target
+
+# Information Gathering Scripts
+nmap --script dns-brute target                             # DNS brute force
+nmap --script smb-enum-shares target                       # SMB share enumeration
+nmap --script http-enum target                             # HTTP directory enumeration
+```
+
+**Documentation**: Leverages NSE for automated vulnerability detection and service enumeration.
+**Limitations**: Scripts may be outdated; some may cause service disruption.
+
+## UDP Scanning and Service Discovery
+```bash
+# Comprehensive UDP Scanning
+nmap -sU --top-ports 1000 target                           # Top 1000 UDP ports
+nmap -sU -p 53,67,68,69,123,161,162,500,514,1434 target   # Common UDP services
+unicornscan -mU target                                     # Alternative UDP scanner
+
+# SNMP Enumeration
+snmpwalk -c public -v1 target                              # SNMP walk with public community
+snmpcheck -t target                                        # SNMP security check
+onesixtyone -c community.txt target                        # SNMP community brute force
+```
+
+**Documentation**: Identifies UDP services which are often overlooked in security assessments.
+**Limitations**: UDP scanning is slower and less reliable than TCP; may produce false positives.
+
+## Masscan - High-Speed Port Scanning
+```bash
+# Mass Port Scanning
+masscan -p1-65535 target --rate=1000                       # Full port range scan
+masscan -p80,443,8080,8443 0.0.0.0/0 --rate=10000        # Internet-wide scan (use responsibly)
+masscan -p22 192.168.1.0/24 --rate=1000 --banners        # SSH service discovery with banners
+
+# Masscan with Nmap Follow-up
+masscan -p1-65535 target --rate=1000 -oG masscan.out
+nmap -sV -iL masscan_targets.txt                           # Version detection on discovered ports
+```
+
+**Documentation**: Ultra-fast port scanning for large networks and internet-wide reconnaissance.
+**Limitations**: High-speed scans may overwhelm targets; requires careful rate limiting.
+
+## Network Discovery and Host Enumeration
+```bash
+# ARP Scanning (Local Network)
+arp-scan -l                                                # Local network ARP scan
+arp-scan 192.168.1.0/24                                  # Specific subnet ARP scan
+netdiscover -r 192.168.1.0/24 -P                         # Passive network discovery
+
+# ICMP Scanning Variations
+nmap -sn -PE target                                       # ICMP Echo ping
+nmap -sn -PP target                                       # ICMP Timestamp ping
+nmap -sn -PM target                                       # ICMP Address Mask ping
+fping -a -g 192.168.1.0/24                               # Fast ping sweep
+```
+
+**Documentation**: Discovers live hosts using various network protocols and techniques.
+**Limitations**: ICMP may be blocked by firewalls; ARP scanning limited to local subnet.
+
+## IPv6 Scanning Techniques
+```bash
+# IPv6 Discovery and Scanning
+nmap -6 target_ipv6                                       # Basic IPv6 scan
+nmap -6 -sS target_ipv6                                   # IPv6 SYN scan
+alive6 eth0                                               # IPv6 alive scan
+thc-ipv6 -i eth0                                         # THC IPv6 toolkit
+
+# IPv6 Address Generation
+atk6-address6 target_prefix                               # Generate IPv6 addresses
+atk6-detect-new-ip6 eth0                                  # Detect new IPv6 addresses
+```
+
+**Documentation**: Scans IPv6 networks which are often less monitored than IPv4.
+**Limitations**: IPv6 scanning requires different techniques; address space is much larger.
+
+## Firewall and IDS Evasion Advanced Techniques
+```bash
+# Source Port Manipulation
+nmap -g 53 target                                         # Source port 53 (DNS)
+nmap -g 88 target                                         # Source port 88 (Kerberos)
+hping3 -S -p 80 -s 53 target                            # Custom source port with hping3
+
+# IP ID and Sequence Manipulation
+nmap -sI zombie_host target                               # IDLE scan using zombie host
+nmap --ip-options "L 192.168.1.1,192.168.1.2" target    # Loose source routing
+
+# MTU and Fragmentation
+nmap -f --mtu 24 target                                   # Custom MTU fragmentation
+nmap --send-ip target                                     # Raw IP packets
+```
+
+**Documentation**: Advanced evasion techniques to bypass network security controls.
+**Limitations**: Modern firewalls may detect these techniques; some may require root privileges.
+
+# Network Scanning Automation Scripts
+
+## Bash Script for Comprehensive Network Scan
+```bash
+#!/bin/bash
+# comprehensive_scan.sh - Automated network reconnaissance
+
+TARGET=$1
+LOGDIR="scan_results_$(date +%Y%m%d_%H%M%S)"
+
+mkdir -p $LOGDIR
+
+# Host discovery
+echo "[+] Performing host discovery..."
+nmap -sn $TARGET > $LOGDIR/host_discovery.txt
+
+# Port scanning
+echo "[+] Performing port scan..."
+nmap -sS -T4 $TARGET > $LOGDIR/port_scan.txt
+
+# Service detection
+echo "[+] Performing service detection..."
+nmap -sV $TARGET > $LOGDIR/service_detection.txt
+
+# Vulnerability scanning
+echo "[+] Performing vulnerability scan..."
+nmap --script vuln $TARGET > $LOGDIR/vulnerability_scan.txt
+
+echo "[+] Scan complete. Results saved in $LOGDIR/"
+```
+
+**Documentation**: Automated scanning workflow for comprehensive network assessment.
+**Limitations**: May trigger security alerts; requires careful timing in production environments.
+
+# Reference URLs and Research Papers:
+- Nmap Official Documentation: https://nmap.org/book/
+- NIST SP 800-115 Network Security Testing: https://csrc.nist.gov/publications/detail/sp/800-115/final
+- Fyodor's Original Nmap Paper: https://nmap.org/misc/nmap_doc.html
+- Research Paper: "Network Scanning Techniques and Defense" - https://ieeexplore.ieee.org/document/8444985
+- SANS Network Security Monitoring: https://www.sans.org/reading-room/whitepapers/detection/
+- RFC 793 - TCP Protocol: https://tools.ietf.org/html/rfc793
+- IPv6 Security Research: https://www.ipv6security.org/
+- Masscan Documentation: https://github.com/robertdavidgraham/masscan
