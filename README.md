@@ -92,3 +92,20 @@
 | [![Memory Corruption and Buffer Overflow](https://img.youtube.com/vi/LNqpE_6DfBU/hqdefault.jpg)](https://youtu.be/LNqpE_6DfBU?si=PYgbzLXx3gZ5rtp9) | [![Eternal Blue or MS-17-010 or CVE-2017-0144](https://img.youtube.com/vi/1A23SXBWDqs/hqdefault.jpg)](https://youtu.be/1A23SXBWDqs?si=qSoY2SwZUQcSTc2x) |
 
 </details>
+
+---
+
+## 🎯 Stay Updated with Pentesting-Club
+
+Subscribe to **[Pentesting-Club YouTube Channel](https://www.youtube.com/@pentesting-club)** for:
+- 🔴 Live penetration testing sessions
+- 🛠️ Advanced hacking techniques and tutorials  
+- 🏆 CTF walkthroughs and cybersecurity challenges
+- 📚 In-depth security research and tool reviews
+- 💡 Real-world penetration testing scenarios
+
+**Follow us for the latest in cybersecurity education and practical penetration testing content!**
+
+---
+
+*This repository contains educational content for Certified Ethical Hacker (CEH) preparation. All techniques and payloads are provided for educational and authorized testing purposes only. Users are responsible for complying with applicable laws and regulations.*
